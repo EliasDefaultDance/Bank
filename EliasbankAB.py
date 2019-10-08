@@ -5,13 +5,15 @@ userBankId = int(input("bankID: "))
 if userBankId != bankId:
     exit()
 menu = 0
-saldo = 0
-
+file = open("Saldo.txt", "r+")
+saldo = float(file.readline())
 while menu == 0:
     menu = int(input("Menu: 1.deposit 2.withdraw 3.logout"))
     if menu == 1:
         deposit = float(input("Deposit, how much? "))
         saldo = saldo + deposit
+        file.write(str(saldo))
+        file.close()
         print(saldo)
         menu = 0
     elif menu == 2:
